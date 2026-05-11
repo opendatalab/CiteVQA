@@ -1,0 +1,5 @@
+Question: {question}
+
+Standard Answer (without images, no need to evaluate): {standard_answer}
+
+Model's Answer with Images: {answer_with_images}

@@ -1,0 +1,7 @@
+data/pdf
+data/data_items.json
+*.pyc
+eval/__pycache__/
+infer/__pycache__/
+
+

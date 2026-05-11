@@ -1,0 +1,5 @@
+Question: {question}
+
+Standard Answer: {standard_answer}
+
+Model's Answer: {model_answer_no_bbox}

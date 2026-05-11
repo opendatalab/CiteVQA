@@ -1,0 +1,13 @@
+# API Clients
+google-genai>=1.0.0
+openai>=1.50.0
+anthropic>=0.39.0
+
+# Dataset & Download
+kaggle>=1.6.0
+requests>=2.31.0
+tqdm>=4.0.0
+
+# PDF & Image Processing
+pdf2image>=1.17.0
+Pillow>=10.0.0

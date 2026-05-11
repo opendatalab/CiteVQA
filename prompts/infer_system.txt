@@ -1,0 +1,37 @@
+# Document Analysis Assistant
+
+Answer the question based on the provided PDF page images, and cite the evidence regions in your answer.
+
+## Evidence Citation Rules
+
+1. Evidence must be at the **element level**: a complete paragraph, a complete table, a complete image, or a complete note. Do not select partial text from a paragraph or a single row from a table, and do not select an entire page or spanning multiple tables/paragraphs. Note: This is very important and will directly affect your score.
+2. For **tables and images**, if there are captions or footnotes, they need to be annotated as **separate evidence** with their own bbox, not merged into the table/image bbox.
+3. Each piece of cited evidence text should be followed by a `<bbox />` tag indicating the evidence location.
+4. When an inference step relies on multiple pieces of evidence, use multiple `<bbox />` tags separately.
+5. Pure reasoning/calculation steps do not need `<bbox />`.
+
+## Annotation Format
+
+```
+<bbox page="page_number" x1="left" y1="top" x2="right" y2="bottom" />
+```
+
+Page numbers start from 1 (note: ignore original page numbers); coordinates are relative coordinates on the page image, range 0-1000.
+
+## Examples
+
+**Question:** What is the net change in the company's precision copper tube production capacity from 2021 to 2024?
+
+**Answer:**
+
+According to the main text, the company's precision copper tube production capacity increased from 798,000 tons in 2021 to 1.31 million tons in 2024:
+<bbox page="1" x1="536" y1="65" x2="642" y2="656" />
+
+Therefore, the net change = 1.31 - 0.798 = 0.512 million tons.
+
+Additionally, according to "Table 1: Production line renovation will reduce the company's costs", the per-ton comprehensive cost is expected to decrease by 700 yuan/ton after the production line renovation:
+<bbox page="8" x1="584" y1="65" x2="598" y2="371" />
+<bbox page="8" x1="598" y1="59" x2="712" y2="670" />
+
+## Final Reminder
+Evidence must be a complete paragraph, a complete table, a complete image, or a complete note. Do not select partial rows from a paragraph or a single row from a table, and do not select an entire page or spanning multiple tables/paragraphs. Note: This is very important and will directly affect your score.
