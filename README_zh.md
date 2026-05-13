@@ -40,17 +40,6 @@
 - **多文档推理**：除单文档问答外，数据集还包含需要跨文档聚合证据的问题。
 - **三种评测设置**：基准同时覆盖 `Single-Doc`、`Multi (1-Gold)` 和 `Multi (N-Gold)` 三类场景。
 
-## 🧱 构建流程
-
-CiteVQA 通过自动化流程完成文档关联、证据包提取、问答对生成，以及关键证据验证，从而支持面向归因的评测。
-
-<p align="center">
-  <img src="./img/citevqa_pipeline.png" width="92%" alt="CiteVQA pipeline">
-</p>
-<p align="center">
-  <em>涵盖文档收集、证据提取、问答构造与质量控制的自动化流程。</em>
-</p>
-
 ## ⚙️ 环境配置
 
 安装依赖：
@@ -92,7 +81,7 @@ fc-cache -f
 
 ```bash
 pip install -U "huggingface_hub[cli]"
-hf download opendatalab/CiteVQA --repo-type dataset --local-dir data
+hf download opendatalab/CiteVQA --repo-type dataset --local-dir .
 python data/download/download_pdfs.py --workers 16 --out data/pdf --csv data/download/pdf_source.csv
 ```
 
@@ -100,18 +89,14 @@ python data/download/download_pdfs.py --workers 16 --out data/pdf --csv data/dow
 
 ```bash
 pip install -U modelscope
-modelscope download --dataset OpenDataLab/CiteVQA --local_dir data
-python data/download/download_pdfs.py --workers 16 --out data/pdf --csv data/download/pdf_source.csv
-```
-
-或者，如果你希望通过 Kaggle 下载 benchmark 文件，并进一步批量下载源 PDF，可执行：
-
-```bash
-kaggle datasets download anonymouscitevqa/citevqa -p data --unzip
+modelscope download --dataset OpenDataLab/CiteVQA --local_dir .
 python data/download/download_pdfs.py --workers 16 --out data/pdf --csv data/download/pdf_source.csv
 ```
 
 PDF 下载脚本会读取 `data/download/pdf_source.csv`，并将所有文件保存到 `data/pdf/`。
+
+<details>
+<summary>下载参数</summary>
 
 | 参数 | 默认值 | 说明 |
 | --- | --- | --- |
@@ -122,9 +107,11 @@ PDF 下载脚本会读取 `data/download/pdf_source.csv`，并将所有文件保
 | `--retries` | `3` | 重试次数 |
 | `--no-skip` | - | 对已存在文件重新下载 |
 
+</details>
+
 ## 🚀 推理与评测
 
-先在 `run.sh` 中编辑 API 配置，然后执行：
+`bash run.sh` 提供了一个评测 `GPT-5.4` 的 demo。先在 `run.sh` 中编辑 API 配置，然后执行：
 
 ```bash
 bash run.sh
@@ -165,6 +152,9 @@ python eval/summarize.py \
 
 ### 🧭 推理参数
 
+<details>
+<summary>推理参数</summary>
+
 | 参数 | 必需 | 说明 |
 | --- | --- | --- |
 | `--api` | 是 | `openai`、`genai` 或 `anthropic` |
@@ -177,7 +167,12 @@ python eval/summarize.py \
 | `--limit` | 否 | 样本数限制，`0` 表示全部 |
 | `--max_pdf_mb` | 否 | 超过该大小时先压缩 PDF，单位 MB |
 
+</details>
+
 ### 📏 评测参数
+
+<details>
+<summary>评测参数</summary>
 
 | 参数 | 必需 | 说明 |
 | --- | --- | --- |
@@ -191,12 +186,15 @@ python eval/summarize.py \
 | `--out` | 否 | 输出 JSON 路径 |
 | `--limit` | 否 | 样本数限制 |
 
+</details>
+
 ## 🗂️ 仓库结构
 
 ```text
 CiteVQA/
 ├── data/
-│   ├── data_items.json          # 基准问答对
+│   ├── validation/
+│   │   └── CiteVQA.json         # 基准问答对
 │   ├── pdf/                     # 下载后的 PDF
 │   └── download/
 │       ├── pdf_source.csv       # PDF 元数据与链接
@@ -259,6 +257,10 @@ CiteVQA/
 | Qwen3-VL-8B | 开源小模型 | 1.0 | 14.7 | 61.2 | 7.5 |
 | Gemma-4-26B-A4B | 开源小模型 | 3.0 | 17.9 | 48.4 | 6.2 |
 
+## 📬 联系
+
+由于 PDF sources 通过链接下载，在下载过程中可能会遇到数据可访问性或链接失效等问题。如有任何下载相关问题，请发送邮件至 `wzr@stu.pku.edu.cn`。
+
 ## 📚 引用
 
 ```bibtex
@@ -272,3 +274,9 @@ CiteVQA/
 ## 📄 License
 
 本项目采用 MIT License。详情请参见 [LICENSE](./LICENSE) 文件。
+
+## ©️ 版权声明
+
+CiteVQA 所涉及的 PDF 来源于公开可访问的网络资源，主要通过 Common Crawl 收集。为尊重版权与内容分发约束，本项目仅发布结构化标注、元数据以及公开下载链接，不直接重新分发受版权保护的 PDF 内容。
+
+本数据集仅用于学术研究和非商业用途。我们充分尊重原始版权持有者的合法权益。若相关权利人认为本基准中任何内容的收录、索引或使用存在不妥之处，请联系 `OpenDataLab@pjlab.org.cn`。我们将在核实后及时配合删除或更新相关内容。

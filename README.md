@@ -41,17 +41,6 @@ The evaluation covers three dataset types:
 - **Multi-document reasoning**: In addition to single-document QA, the dataset includes cross-document questions requiring evidence aggregation.
 - **Three evaluation settings**: The benchmark covers `Single-Doc`, `Multi (1-Gold)`, and `Multi (N-Gold)` setups.
 
-## 🧱 Pipeline
-
-CiteVQA is built with an automated pipeline that links documents, extracts evidence packages, synthesizes question-answer pairs, and validates crucial evidence for attribution-aware evaluation.
-
-<p align="center">
-  <img src="./img/citevqa_pipeline.png" width="92%" alt="CiteVQA pipeline">
-</p>
-<p align="center">
-  <em>Automated pipeline for document collection, evidence extraction, QA construction, and quality control.</em>
-</p>
-
 ## ⚙️ Setup
 
 Install dependencies:
@@ -93,7 +82,7 @@ From the repository root, you can fetch the benchmark files from Hugging Face in
 
 ```bash
 pip install -U "huggingface_hub[cli]"
-hf download opendatalab/CiteVQA --repo-type dataset --local-dir data
+hf download opendatalab/CiteVQA --repo-type dataset --local-dir .
 python data/download/download_pdfs.py --workers 16 --out data/pdf --csv data/download/pdf_source.csv
 ```
 
@@ -101,18 +90,14 @@ From the repository root, you can also fetch the benchmark files from ModelScope
 
 ```bash
 pip install -U modelscope
-modelscope download --dataset OpenDataLab/CiteVQA --local_dir data
-python data/download/download_pdfs.py --workers 16 --out data/pdf --csv data/download/pdf_source.csv
-```
-
-Alternatively, if you want to download the benchmark files via Kaggle and then fetch the source PDFs in batch, run:
-
-```bash
-kaggle datasets download anonymouscitevqa/citevqa -p data --unzip
+modelscope download --dataset OpenDataLab/CiteVQA --local_dir .
 python data/download/download_pdfs.py --workers 16 --out data/pdf --csv data/download/pdf_source.csv
 ```
 
 The PDF downloader reads `data/download/pdf_source.csv` and saves all files to `data/pdf/`.
+
+<details>
+<summary>Download Arguments</summary>
 
 | Option | Default | Description |
 | --- | --- | --- |
@@ -123,9 +108,11 @@ The PDF downloader reads `data/download/pdf_source.csv` and saves all files to `
 | `--retries` | `3` | Retry count |
 | `--no-skip` | - | Re-download existing files |
 
+</details>
+
 ## 🚀 Inference and Evaluation
 
-Edit API settings in `run.sh`, then run:
+`bash run.sh` provides a demo for evaluating `GPT-5.4`. Edit the API settings in `run.sh`, then run:
 
 ```bash
 bash run.sh
@@ -166,6 +153,9 @@ python eval/summarize.py \
 
 ### 🧭 Inference Arguments
 
+<details>
+<summary>Inference Arguments</summary>
+
 | Option | Required | Description |
 | --- | --- | --- |
 | `--api` | Yes | `openai`, `genai`, or `anthropic` |
@@ -178,7 +168,12 @@ python eval/summarize.py \
 | `--limit` | No | Sample limit, `0` means all |
 | `--max_pdf_mb` | No | Compress PDFs larger than this size in MB |
 
+</details>
+
 ### 📏 Evaluation Arguments
+
+<details>
+<summary>Evaluation Arguments</summary>
 
 | Option | Required | Description |
 | --- | --- | --- |
@@ -192,12 +187,15 @@ python eval/summarize.py \
 | `--out` | No | Output JSON path |
 | `--limit` | No | Sample limit |
 
+</details>
+
 ## 🗂️ Repository Structure
 
 ```text
 CiteVQA/
 ├── data/
-│   ├── data_items.json          # Benchmark QA pairs
+│   ├── validation/
+│   │   └── CiteVQA.json         # Benchmark QA pairs
 │   ├── pdf/                     # Downloaded PDFs
 │   └── download/
 │       ├── pdf_source.csv       # PDF metadata & URLs
@@ -260,7 +258,9 @@ Full overall results:
 | Qwen3-VL-8B | Open-source Small MLLMs | 1.0 | 14.7 | 61.2 | 7.5 |
 | Gemma-4-26B-A4B | Open-source Small MLLMs | 3.0 | 17.9 | 48.4 | 6.2 |
 
+## 📬 Contact
 
+Since the PDF sources are downloaded from external links, issues such as broken links or data accessibility problems may occur during download. If you encounter any download-related problems, please email `wzr@stu.pku.edu.cn`.
 
 ## 📚 Citation
 
@@ -275,3 +275,9 @@ Full overall results:
 ## 📄 License
 
 This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.
+
+## ©️ Copyright Notice
+
+The PDF sources in CiteVQA are collected from publicly accessible web resources, primarily via Common Crawl. To respect copyright and redistribution constraints, this project releases structured annotations, metadata, and public download links, rather than redistributing protected PDF contents directly.
+
+CiteVQA is provided for academic research and non-commercial use only. We fully respect the rights of original copyright holders. If any rights holder believes that the inclusion, indexing, or use of any relevant content in this benchmark is inappropriate, please contact `OpenDataLab@pjlab.org.cn`. We will verify the request and remove or update the relevant content when appropriate.

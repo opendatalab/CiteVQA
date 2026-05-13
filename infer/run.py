@@ -13,7 +13,7 @@ from tqdm import tqdm
 
 ROOT = Path(__file__).resolve().parent.parent
 PROMPTS = ROOT / "prompts"
-BENCHMARK = ROOT / "data" / "data_items.json"
+BENCHMARK = ROOT / "data" / "validation" / "CiteVQA.json"
 OUTPUTS = ROOT / "outputs"
 
 # ── bbox regex ──────────────────────────────────────────
