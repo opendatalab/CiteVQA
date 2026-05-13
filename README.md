@@ -96,6 +96,8 @@ python data/download/download_pdfs.py --workers 16 --out data/pdf --csv data/dow
 
 The PDF downloader reads `data/download/pdf_source.csv` and saves all files to `data/pdf/`.
 
+If you run into dataset or download issues, jump to the [Contact](#contact) section.
+
 <details>
 <summary>Download Arguments</summary>
 
@@ -258,9 +260,10 @@ Full overall results:
 | Qwen3-VL-8B | Open-source Small MLLMs | 1.0 | 14.7 | 61.2 | 7.5 |
 | Gemma-4-26B-A4B | Open-source Small MLLMs | 3.0 | 17.9 | 48.4 | 6.2 |
 
+<a id="contact"></a>
 ## 📬 Contact
 
-Since the PDF sources are downloaded from external links, issues such as broken links or data accessibility problems may occur during download. If you encounter any download-related problems, please email `wzr@stu.pku.edu.cn`.
+Since the PDF sources are downloaded from external links, issues such as broken links or data accessibility problems may occur during download. If you encounter any download-related problems, please email [wzr@stu.pku.edu.cn](mailto:wzr@stu.pku.edu.cn).
 
 ## 📚 Citation
 
@@ -277,7 +280,5 @@ Since the PDF sources are downloaded from external links, issues such as broken 
 This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.
 
 ## ©️ Copyright Notice
-
-The PDF sources in CiteVQA are collected from publicly accessible web resources, primarily via Common Crawl. To respect copyright and redistribution constraints, this project releases structured annotations, metadata, and public download links, rather than redistributing protected PDF contents directly.
 
 CiteVQA is provided for academic research and non-commercial use only. We fully respect the rights of original copyright holders. If any rights holder believes that the inclusion, indexing, or use of any relevant content in this benchmark is inappropriate, please contact `OpenDataLab@pjlab.org.cn`. We will verify the request and remove or update the relevant content when appropriate.

@@ -95,6 +95,8 @@ python data/download/download_pdfs.py --workers 16 --out data/pdf --csv data/dow
 
 PDF 下载脚本会读取 `data/download/pdf_source.csv`，并将所有文件保存到 `data/pdf/`。
 
+如果你在数据集或下载过程中遇到问题，可直接跳转到后面的 [联系](#contact) 部分。
+
 <details>
 <summary>下载参数</summary>
 
@@ -257,9 +259,10 @@ CiteVQA/
 | Qwen3-VL-8B | 开源小模型 | 1.0 | 14.7 | 61.2 | 7.5 |
 | Gemma-4-26B-A4B | 开源小模型 | 3.0 | 17.9 | 48.4 | 6.2 |
 
+<a id="contact"></a>
 ## 📬 联系
 
-由于 PDF sources 通过链接下载，在下载过程中可能会遇到数据可访问性或链接失效等问题。如有任何下载相关问题，请发送邮件至 `wzr@stu.pku.edu.cn`。
+由于 PDF sources 通过链接下载，在下载过程中可能会遇到数据可访问性或链接失效等问题。如有任何下载相关问题，请发送邮件至 [wzr@stu.pku.edu.cn](mailto:wzr@stu.pku.edu.cn)。
 
 ## 📚 引用
 
@@ -276,7 +279,5 @@ CiteVQA/
 本项目采用 MIT License。详情请参见 [LICENSE](./LICENSE) 文件。
 
 ## ©️ 版权声明
-
-CiteVQA 所涉及的 PDF 来源于公开可访问的网络资源，主要通过 Common Crawl 收集。为尊重版权与内容分发约束，本项目仅发布结构化标注、元数据以及公开下载链接，不直接重新分发受版权保护的 PDF 内容。
 
 本数据集仅用于学术研究和非商业用途。我们充分尊重原始版权持有者的合法权益。若相关权利人认为本基准中任何内容的收录、索引或使用存在不妥之处，请联系 `OpenDataLab@pjlab.org.cn`。我们将在核实后及时配合删除或更新相关内容。
