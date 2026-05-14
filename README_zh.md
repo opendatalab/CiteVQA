@@ -32,7 +32,9 @@
   <img src="./img/citevqa_example.png" width="92%" alt="CiteVQA overview">
 </p>
 <p align="center">
-  <em>CiteVQA 同时审计答案正确性与证据归因正确性。</em>
+  <em>
+    CiteVQA 概览。左侧表示 SAA 的判定逻辑：预测只有在答案正确，且引用证据与标准证据在语义上相关、在空间上充分对齐时，才被记为正确。右上展示数据集统计，说明 CiteVQA 更强调长篇、真实场景 PDF。右下展示模型表现，表明现有 MLLM 在答案正确率与证据归因正确率之间仍存在显著差距。
+  </em>
 </p>
 
 ## ✨ 亮点

@@ -32,18 +32,20 @@ The evaluation covers three dataset types:
   <img src="./img/citevqa_example.png" width="92%" alt="CiteVQA overview">
 </p>
 <p align="center">
-  <em>CiteVQA jointly audits answer correctness and evidence attribution.</em>
+  <em>
+    Overview of CiteVQA. Left: a prediction is counted as correct only when the answer is correct and the cited evidence region is both relevant and spatially aligned with the gold evidence under Strictly Attributed Accuracy (SAA). Right top: dataset statistics show that CiteVQA emphasizes long, realistic PDFs. Right bottom: existing MLLMs exhibit a substantial gap between answer accuracy and evidence-grounded accuracy.
+  </em>
 </p>
 
 
 ## ✨ Highlights
 
-- **Joint answer-and-evidence evaluation**: CiteVQA is built for evaluating both answer correctness and citation faithfulness.
-- **Element-level evidence**: Ground-truth evidence is provided as structured elements with bounding boxes, page indices, and document indices.
-- **Long-document setting**: Documents are multi-page PDFs with realistic length and layout complexity.
-- **Cross-domain and bilingual**: The benchmark spans **7 domains**, **30 sub-domains**, and two languages (`en`, `zh`).
-- **Multi-document reasoning**: In addition to single-document QA, the dataset includes cross-document questions requiring evidence aggregation.
-- **Three evaluation settings**: The benchmark covers `Single-Doc`, `Multi (1-Gold)`, and `Multi (N-Gold)` setups.
+- **Joint answer-and-evidence evaluation**: CiteVQA evaluates both answer correctness and citation faithfulness.
+- **Element-level evidence**: Gold evidence is provided as structured elements with bounding boxes, page indices, and document indices.
+- **Long-document setting**: The benchmark centers on multi-page PDFs with realistic length and layout complexity.
+- **Cross-domain and bilingual**: CiteVQA spans **7 domains**, **30 sub-domains**, and two languages (`en`, `zh`).
+- **Multi-document reasoning**: Beyond single-document QA, the dataset includes cross-document questions requiring evidence aggregation.
+- **Three evaluation settings**: The benchmark supports `Single-Doc`, `Multi (1-Gold)`, and `Multi (N-Gold)` setups.
 
 ## ⚙️ Setup
 
