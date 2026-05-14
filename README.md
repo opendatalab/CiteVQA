@@ -40,12 +40,12 @@ The evaluation covers three dataset types:
 
 ## ✨ Highlights
 
-- **Joint answer-and-evidence evaluation**: CiteVQA evaluates both answer correctness and citation faithfulness.
-- **Element-level evidence**: Gold evidence is provided as structured elements with bounding boxes, page indices, and document indices.
-- **Long-document setting**: The benchmark centers on multi-page PDFs with realistic length and layout complexity.
-- **Cross-domain and bilingual**: CiteVQA spans **7 domains**, **30 sub-domains**, and two languages (`en`, `zh`).
-- **Multi-document reasoning**: Beyond single-document QA, the dataset includes cross-document questions requiring evidence aggregation.
-- **Three evaluation settings**: The benchmark supports `Single-Doc`, `Multi (1-Gold)`, and `Multi (N-Gold)` setups.
+- **Joint answer-and-evidence evaluation**: Evaluates both answer correctness and citation faithfulness.
+- **Element-level evidence**: Structured gold evidence features bounding boxes, page, and document indices.
+- **Long-document setting**: Focuses on multi-page PDFs with realistic lengths and complex layouts.
+- **Cross-domain and bilingual**: Spans **7 domains**, **30 sub-domains**, and two languages (`en`, `zh`).
+- **Multi-document reasoning**: Features cross-document questions that require evidence aggregation.
+- **Three evaluation settings**: Supports `Single-Doc`, `Multi (1-Gold)`, and `Multi (N-Gold)`.
 
 ## ⚙️ Setup
 
