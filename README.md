@@ -7,6 +7,12 @@
   <a href="./LICENSE.txt"><img src="https://img.shields.io/badge/License-MIT-green?style=flat-square" alt="License MIT" /></a>
 </p>
 
+<div align="center">
+  <a href="https://huggingface.co/papers/2605.12882">
+    <img src="img/huggingface_paper_gold_day.svg"/>
+  </a>
+</div>
+
 <p align="center">
   📖 <a href="./README.md"><b>English</b></a> &nbsp;|&nbsp; <a href="./README_zh.md"><b>简体中文</b></a>
 </p>
